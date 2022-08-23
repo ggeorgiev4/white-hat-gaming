@@ -1,0 +1,35 @@
+.app-wrapper {
+    width: 100vw;
+
+    .content-wrapper {
+        padding: 20px 100px;
+        overflow-x: hidden;
+        height: calc(100vh - 104px);
+
+        .games-wrapper {
+            .game {
+                display: inline-block;
+                vertical-align: top;
+                width: 20%;
+
+                &.hidden {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .app-wrapper .content-wrapper {
+        padding: 20px 50px;
+        .games-wrapper .game {width: 25%;}
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .app-wrapper .content-wrapper {
+        padding: 20px;
+        .games-wrapper .game {width: 33%;}
+    }
+}

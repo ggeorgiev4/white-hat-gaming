@@ -1,0 +1,17 @@
+<div class="game-card">
+    <div class="jackpot" *ngIf="hasJackpot">
+        £{{game | jackpot : jackpots : updatePipe}}
+    </div>
+
+    <div class="top" *ngIf="game.categories.indexOf('top') > -1">
+        top
+    </div>
+
+    <div class="new" *ngIf="game.categories.indexOf('new') > -1">
+        new
+    </div>
+
+    <img src="{{game.image}}" alt="">
+
+    <button class="play">Play</button>
+</div>

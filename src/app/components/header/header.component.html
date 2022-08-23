@@ -1,0 +1,11 @@
+
+<div class="app-header">
+    <mat-toolbar class="bg-dark-grey">
+        <span *ngFor="let category of categories"
+            class="nav-link white"
+            [ngClass]="{'active': activeCategory === category}"
+            (click)="categoryChange(category)">
+            {{category}}
+        </span>
+    </mat-toolbar>
+</div>
