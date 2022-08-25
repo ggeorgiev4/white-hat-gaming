@@ -6,6 +6,10 @@ const routes: Routes = [
     {
         path: ':name',
         component: CategoryComponent,
+    },
+    {
+        path: '**',
+        redirectTo: 'top'
     }
 ];
 
