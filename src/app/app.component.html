@@ -1,20 +1,9 @@
 <div class="app-wrapper bg-grey">
     <div class="header-wrapper">
-        <app-header (onCategoryChange)="categoryChanged($event)"></app-header>
+        <app-header></app-header>
     </div>
 
     <div class="content-wrapper">
-
-        <div class="games-wrapper" *ngIf="games?.length; else noGames">
-            <div *ngFor="let game of games"
-                class="game" 
-                [ngClass]="{'hidden': !(game | isInActiveCategory : activeCategory)}">
-                <app-game-card [game]="game"></app-game-card>
-            </div>
-        </div>
-
-        <ng-template #noGames>
-            No games available in this category
-        </ng-template>
+        <router-outlet></router-outlet>
     </div>
 </div>

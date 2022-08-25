@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject, distinctUntilChanged, takeUntil } from 'rxjs';
 import { AppService } from 'src/app/app.service';
 
 @Component({
@@ -8,18 +10,32 @@ import { AppService } from 'src/app/app.service';
 })
 export class HeaderComponent {
 
-    @Output('onCategoryChange') onCategoryChange = new EventEmitter<string>();
+    public categories: Array<string>;
+    public activeCategory: string;
+    public destroy$: Subject<boolean> = new Subject();
 
-    public categories: Array<string> = [];
-    public activeCategory: string = '';
-
-    constructor(private appService: AppService) {
+    constructor(private appService: AppService,
+                private router: Router) {
         this.categories = this.appService.getCategories();
-        this.activeCategory = this.categories[0];
+    }
+
+    ngOnInit(): void {
+        this.appService.categoryChanged
+            .pipe(takeUntil(this.destroy$))
+            .pipe(distinctUntilChanged())
+            .subscribe((category: string) => {
+                this.activeCategory = category;
+        });
     }
 
     public categoryChange(category: string): void {
         this.activeCategory = category;
-        this.onCategoryChange.emit(category);
+        this.appService.updateCategory(this.activeCategory);
+        this.router.navigate([category]);
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next(true);
+        this.destroy$.complete();
     }
 }

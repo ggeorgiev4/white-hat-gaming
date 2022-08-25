@@ -16,6 +16,7 @@ export class AppService {
 
     public otherCategories = ['fun', 'virtual', 'ball'];
     public jackpotsUpdated: Subject<boolean> = new Subject();
+    public categoryChanged: Subject<string> = new Subject();
 
     constructor() {
         this.jackpots = JACKPOTS;
@@ -28,6 +29,10 @@ export class AppService {
 
     public getJackpots(): Array<Jackpot> {
         return this.jackpots;
+    }
+
+    public updateCategory(category: string): void {
+        this.categoryChanged.next(category);
     }
 
     public getCategories(): Array<string> {

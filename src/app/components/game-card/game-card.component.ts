@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { distinctUntilChanged, map, of, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AppService } from 'src/app/app.service';
 import { Game } from 'src/app/models/game.model';
 import { Jackpot } from 'src/app/models/jackpot.model';
@@ -12,6 +12,7 @@ import { Jackpot } from 'src/app/models/jackpot.model';
 export class GameCardComponent implements OnInit, OnDestroy {
 
     @Input('game') game: Game;
+    @Input('activeCategory') activeCategory: string;
 
     public jackpots: Array<Jackpot>;
     public updatePipe: number = 0;

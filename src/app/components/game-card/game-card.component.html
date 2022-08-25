@@ -1,17 +1,20 @@
-<div class="game-card">
+<div class="game-card" style="background-image: url({{game.image}});">
     <div class="jackpot" *ngIf="hasJackpot">
         £{{game | jackpot : jackpots : updatePipe}}
     </div>
 
-    <div class="top" *ngIf="game.categories.indexOf('top') > -1">
+    <div class="top" *ngIf="game.categories.indexOf('top') > -1 && activeCategory !== 'top'">
         top
     </div>
 
-    <div class="new" *ngIf="game.categories.indexOf('new') > -1">
+    <div class="new" *ngIf="game.categories.indexOf('new') > -1 && activeCategory !== 'new'">
         new
     </div>
 
     <img src="{{game.image}}" alt="">
 
-    <button class="play">Play</button>
+    <div class="name-button">
+        <button class="play">Play</button>
+        <p class="name">{{game.name}}</p>
+    </div>
 </div>

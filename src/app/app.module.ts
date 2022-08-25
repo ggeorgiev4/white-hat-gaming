@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import { IsInActiveCategoryPipe } from './pipes/is-in-active-category.pipe';
 import { HasJackpotPipe } from './pipes/has-jackpot.pipe';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HasJackpotPipe } from './pipes/has-jackpot.pipe';
     GameCardComponent,
     IsInActiveCategoryPipe,
     HasJackpotPipe,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

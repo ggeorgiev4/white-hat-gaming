@@ -1,0 +1,19 @@
+.games-wrapper {
+    .game {
+        display: inline-block;
+        vertical-align: top;
+        width: 20%;
+
+        &.hidden {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .games-wrapper .game {width: 25%;}
+}
+
+@media screen and (max-width: 1000px) {
+    .games-wrapper .game {width: 33%;}
+}
